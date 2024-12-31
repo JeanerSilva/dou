@@ -2,6 +2,7 @@ import requests
 import time
 from datetime import datetime
 from bs4 import BeautifulSoup
+import os
 import winsound
 
 def verificar_expressao(valor, dia, i, tipo_jornal):
@@ -20,7 +21,8 @@ def verificar_expressao(valor, dia, i, tipo_jornal):
         if valor in soup.get_text():
             print("Achei")
             while True:
-                winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)  # Emite um som padrão do sistema no Windows
+                os.system('echo -e "\\a"')
+                #winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)  # Emite um som padrão do sistema no Windows
                 time.sleep(2)            
         else:
             current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
