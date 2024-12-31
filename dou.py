@@ -11,13 +11,11 @@ def verificar_expressao(valor, dia, i, tipo_jornal):
     try:
         response = requests.get(url)
         response.raise_for_status()
-        
-        # Analisa o conteúdo da página
+
         soup = BeautifulSoup(response.text, 'html.parser')
 
         #print(soup.get_text())
         
-        # Verifica se a expressão "Sumário" está presente no conteúdo
         if valor in soup.get_text():
             print("Achei")
             while True:
@@ -35,7 +33,8 @@ def verificar_expressao(valor, dia, i, tipo_jornal):
 
 if __name__ == "__main__":
     i = 0
-    winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)  # Emite um som padrão do sistema no Windows
+    os.system('echo -e "\\a"')
+    #winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)  
     while True:
         i = i + 1
         valor =  "Extra" #"Sumário"
